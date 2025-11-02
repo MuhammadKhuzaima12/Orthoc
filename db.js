@@ -21,11 +21,11 @@ const get_doctors_info = async () => {
 const doctor_info = async (selected_doc) => {
     const selected_doctor = selected_doc.replace(/_/g, " ");
     const { data, error } = await supabase_api
-    .from('doctors_data')
-    .select()
-    .eq("name", `${selected_doctor}`)
-    .single();
-    
+        .from('doctors_data')
+        .select()
+        .eq("name", `${selected_doctor}`)
+        .single();
+
     if (error) {
         console.error(error.message);
         return;
@@ -36,7 +36,7 @@ const doctor_info = async (selected_doc) => {
 }
 // doctor_info()
 
-const add_appointments = async (doctor,day,time) => {
+const add_appointments = async (doctor, day, time) => {
     const { error } = await supabase_api
         .from('appointments')
         .insert({
@@ -46,26 +46,28 @@ const add_appointments = async (doctor,day,time) => {
             day: `${day}`,
             time: `${time}`,
         });
-        
-        if (error) {
-            console.error(error.message);
-            return;
-        }
+
+    if (error) {
+        console.error(error.message);
         return;
     }
+    return;
+}
 // add_appointments()
 
-const get_appointments = async (doctor,day,time) => {
-    const { error } = await supabase_api
+const get_appointments = async (doctor, day, time) => {
+    const { data, error } = await supabase_api
         .from('appointments')
         .select()
         .eq("user_email", `${localStorage.getItem("user_email")}`);
-        
-        if (error) {
-            console.error(error.message);
-            return;
-        }
+
+    if (error) {
+        console.error(error.message);
         return;
     }
+
+    console.log(data)
+    return data;
+}
 // get_appointments()
 
