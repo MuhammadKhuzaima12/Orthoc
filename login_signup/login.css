@@ -11,31 +11,35 @@
 
 /* Background Gradient - matches hospital theme */
 body {
-    background: #178066;
     background-size: 300% 300%;
     animation: gradientMove 8s ease infinite;
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-@keyframes gradientMove {
-    0% {
-        background-position: 0% 50%;
-    }
+/* Header Container */
+.header_section {
+    width: 100%;
+    background: #178066;
+    padding: 30px;
+    border-radius: 0 0 25px 25px;
+}
 
-    50% {
-        background-position: 100% 50%;
-    }
+.btn-outline-info {
+    border-color: #fff !important;
+}
 
-    100% {
-        background-position: 0% 50%;
-    }
+/* Footer Container */
+.footer_section {
+    width: 100%;
 }
 
 /* Form Container */
 .form_section {
+    margin: 50px auto;
     border: 2px solid #178066;
     width: 90%;
     max-width: 420px;
@@ -121,7 +125,7 @@ body {
 }
 
 /* Buttons */
-.btn {
+.button {
     width: 100%;
     background-color: #178066;
     color: #fff;
@@ -134,7 +138,7 @@ body {
     transition: all 0.3s ease;
 }
 
-.btn:hover {
+.button:hover {
     background-color: #fff;
     color: #178066;
     border: 2px solid #178066;
@@ -190,7 +194,7 @@ body {
 }
 
 /* Responsive */
-@media (max-width: 500px) {
+@media (max-width: 250px) {
     .form_section {
         width: 90%;
         height: auto;
